@@ -11,59 +11,59 @@ public class App {
 
         ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
-        System.out.println("====== 3.1 - Inserção de Funcionários ======");
+        System.out.println("====== 3.1 - Insercao de Funcionários ======");
         // 3.1 - Inserir todos os funcionários
-        System.out.println("Adicionando funcionário Maria...");
+        System.out.println("Adicionando funcionario Maria...");
         funcionarios.add(new Funcionario("Maria", LocalDate.of(2000, 10, 18), new BigDecimal("2009.44"), "Operador"));
         
-        System.out.println("Adicionando funcionário João...");
-        funcionarios.add(new Funcionario("João", LocalDate.of(1990, 5, 12), new BigDecimal("2284.38"), "Operador"));
+        System.out.println("Adicionando funcionario Joao...");
+        funcionarios.add(new Funcionario("Joao", LocalDate.of(1990, 5, 12), new BigDecimal("2284.38"), "Operador"));
         
-        System.out.println("Adicionando funcionário Caio...");
+        System.out.println("Adicionando funcionario Caio...");
         funcionarios.add(new Funcionario("Caio", LocalDate.of(1961, 5, 2), new BigDecimal("9836.14"), "Coordenador"));
         
-        System.out.println("Adicionando funcionário Miguel...");
+        System.out.println("Adicionando funcionario Miguel...");
         funcionarios.add(new Funcionario("Miguel", LocalDate.of(1988, 10, 14), new BigDecimal("19119.88"), "Diretor"));
         
-        System.out.println("Adicionando funcionário Alice...");
+        System.out.println("Adicionando funcionario Alice...");
         funcionarios.add(new Funcionario("Alice", LocalDate.of(1995, 1, 5), new BigDecimal("2234.68"), "Recepcionista"));
         
-        System.out.println("Adicionando funcionário Heitor...");
+        System.out.println("Adicionando funcionario Heitor...");
         funcionarios.add(new Funcionario("Heitor", LocalDate.of(1999, 11, 19), new BigDecimal("1582.72"), "Operador"));
         
-        System.out.println("Adicionando funcionário Arthur...");
+        System.out.println("Adicionando funcionario Arthur...");
         funcionarios.add(new Funcionario("Arthur", LocalDate.of(1993, 3, 31), new BigDecimal("4071.84"), "Contador"));
         
-        System.out.println("Adicionando funcionário Laura...");
+        System.out.println("Adicionando funcionario Laura...");
         funcionarios.add(new Funcionario("Laura", LocalDate.of(1994, 7, 8), new BigDecimal("3017.45"), "Gerente"));
         
-        System.out.println("Adicionando funcionário Heloisa...");
+        System.out.println("Adicionando funcionario Heloisa...");
         funcionarios.add(new Funcionario("Heloisa", LocalDate.of(2003, 5, 24), new BigDecimal("1606.85"), "Eletricista"));
         
-        System.out.println("Adicionando funcionário Helena...");
+        System.out.println("Adicionando funcionario Helena...");
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente"));
 
-        System.out.println("Total de funcionários inseridos: " + funcionarios.size() + "\n");
+        System.out.println("Total de funcionarios inseridos: " + funcionarios.size() + "\n");
 
         // 3.2 - Remover o funcionário "João"
         funcionarios.removeIf(f -> f.getNome().equals("João"));
-        System.out.println("====== 3.2 - Remoção de João ======");
-        System.out.println("Funcionário 'João' removido. Total atual: " + funcionarios.size() + "\n");
+        System.out.println("====== 3.2 - Remocao de João ======");
+        System.out.println("Funcionario 'Joao' removido. Total atual: " + funcionarios.size() + "\n");
 
         // 3.3 - Imprimir todos os funcionários com formatação
-        System.out.println("====== 3.3 - Lista de Funcionários ======");
+        System.out.println("====== 3.3 - Lista de Funcionarios ======");
         imprimirFuncionarios(funcionarios);
 
         // 3.4 - Aumentar 10% de salário
-        System.out.println("\n====== 3.4 - Aumento de 10% de Salário ======");
+        System.out.println("\n====== 3.4 - Aumento de 10% de Salario ======");
         funcionarios.forEach(f -> {
             BigDecimal novoSalario = f.getSalario().multiply(new BigDecimal("1.10"));
             f.setSalario(novoSalario);
         });
-        System.out.println("Aumento aplicado a todos os funcionários.\n");
+        System.out.println("Aumento aplicado a todos os funcionarios.\n");
 
         // 3.5 e 3.6 - Agrupar por função e imprimir
-        System.out.println("====== 3.5/3.6 - Agrupamento por Função ======");
+        System.out.println("====== 3.5/3.6 - Agrupamento por Funcao ======");
         Map<String, List<Funcionario>> agrupadosPorFuncao = funcionarios.stream()
                 .collect(Collectors.groupingBy(Funcionario::getFuncao));
 
@@ -81,7 +81,7 @@ public class App {
                         f.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 
         // 3.9 - Imprimir o funcionário com maior idade
-        System.out.println("\n====== 3.9 - Funcionário com Maior Idade ======");
+        System.out.println("\n====== 3.9 - Funcionario com Maior Idade ======");
         Funcionario maisVelho = funcionarios.stream()
                 .min(Comparator.comparing(Funcionario::getDataNascimento))
                 .orElse(null);
@@ -92,25 +92,25 @@ public class App {
         }
 
         // 3.10 - Imprimir em ordem alfabética
-        System.out.println("\n====== 3.10 - Lista Alfabética ======");
+        System.out.println("\n====== 3.10 - Lista Alfabetica ======");
         funcionarios.stream()
                 .sorted(Comparator.comparing(Funcionario::getNome))
                 .forEach(f -> System.out
                         .println(f.getNome() + " | " + f.getFuncao() + " | " + formatarSalario(f.getSalario())));
 
         // 3.11 - Total de salários
-        System.out.println("\n====== 3.11 - Total de Salários ======");
+        System.out.println("\n====== 3.11 - Total de Salarios ======");
         BigDecimal totalSalarios = funcionarios.stream()
                 .map(Funcionario::getSalario)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.println("Total: " + formatarSalario(totalSalarios));
 
         // 3.12 - Quantos salários mínimos cada um ganha
-        System.out.println("\n====== 3.12 - Salários Mínimos ======");
+        System.out.println("\n====== 3.12 - Salarios Minimos ======");
         BigDecimal salarioMinimo = new BigDecimal("1212.00");
         funcionarios.forEach(f -> {
             BigDecimal quantidadeSM = f.getSalario().divide(salarioMinimo, 2, BigDecimal.ROUND_HALF_UP);
-            System.out.println(f.getNome() + ": " + quantidadeSM.toString().replace(".", ",") + " SM");
+            System.out.println(f.getNome() + ": " + quantidadeSM.toString().replace(".", ",") + " Salarios Minimos");
         });
     }
 
